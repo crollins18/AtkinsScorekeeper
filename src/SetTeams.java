@@ -1,7 +1,12 @@
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,9 +23,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Window {
+public class SetTeams {
 
 	private JPanel mainPanel;
+	private JPanel mainPanelRe;
 	private JPanel northPanel;
 	private JPanel middlePanel;
 	private JButton select;
@@ -30,26 +36,19 @@ public class Window {
 	private JComboBox comboBox_1;
 	private JLabel lblTeam;
 	private JLabel lblTeam_1;
+	private JPanel panel_1;
+	private Scorekeeper s;
+	public static JFrame frame;
 	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Window window = new Window();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */
-	public Window() {
+	public SetTeams(Scorekeeper s) {
+		this.s = s;
 		initialize();
 	}
 
@@ -58,12 +57,8 @@ public class Window {
 	 */
 	private void initialize() {
 		
-		Scorekeeper main = new Scorekeeper();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		JFrame frame = new JFrame("Select Teams");
-		JFrame frameMain = new JFrame("AHS Trivia Competition");
-		frameMain.setSize(screenSize.width, screenSize.height);
-		frameMain.setLocationRelativeTo (null);
+		frame = new JFrame("Select Teams");
 		frame.setSize(293, 226);
 		frame.setLocationRelativeTo (null);
 		mainPanel = new JPanel(new BorderLayout());
@@ -73,12 +68,11 @@ public class Window {
 			public void actionPerformed(ActionEvent e) {
 				Team TmpTm1 = (Team) comboBox.getSelectedItem();
 				Team TmpTm2 = (Team) comboBox_1.getSelectedItem();
-				main.setTeams(TmpTm1, TmpTm2);
-				//main.printSetTeams();
+				s.setTeams(TmpTm1, TmpTm2);
+				s.printSetTeams();
 				frame.setVisible(false);
-				frame.disable();
-				frameMain.setVisible(true);
-
+				frame.removeAll();
+				frame.dispose();
 			}
 		});
 		exit = new JButton("Exit");
@@ -95,11 +89,11 @@ public class Window {
 		mainPanel.add(middlePanel, BorderLayout.CENTER);
 		middlePanel.setLayout(null);
 		comboBox = new JComboBox();
-		comboBox.setBounds(125, 11, 142, 22);
+		comboBox.setBounds(105, 11, 142, 22);
 		middlePanel.add(comboBox);
 		
 		comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(125, 44, 142, 22);
+		comboBox_1.setBounds(105, 44, 142, 22);
 		middlePanel.add(comboBox_1);
 		
 		JLabel lblScoringEngineCreated = new JLabel("Scoring Engine Created by Caleb Rollins");
@@ -113,7 +107,13 @@ public class Window {
 		lblTeam_1 = new JLabel("Team 2");
 		lblTeam_1.setBounds(25, 48, 48, 14);
 		middlePanel.add(lblTeam_1);
-		list = main.getAllTeams();
+		
+		panel_1 = new JPanel();
+		frame.getContentPane().add(panel_1, BorderLayout.EAST);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.WEST);
+		list = s.getAllTeams();
 		
 		for(Team t: list) {
 			comboBox.addItem(t);
@@ -124,7 +124,6 @@ public class Window {
 		}
 		
 		frame.setVisible(true);
-		frameMain.setVisible(false);
 		mainPanel.setVisible(true);
 		northPanel.setVisible(true);
 		mainPanel.setVisible(true);

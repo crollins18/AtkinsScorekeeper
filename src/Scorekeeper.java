@@ -41,6 +41,14 @@ public class Scorekeeper {
 		t1 = t1t;
 		t2 = t2t;
 	}
+	
+	public Team getSetTeam1() {
+		return t1;
+	}
+	
+	public Team getSetTeam2() {
+		return t2;
+	}
 
 
 	public static void main(String[] args) {
