@@ -1,7 +1,8 @@
-public class Runner{
+public class Runner extends Thread{
 	
+	static Scorekeeper s;
 	
-private static class T implements Runnable{
+public static class T implements Runnable{
 
 	@Override
 	public void run() {
@@ -9,23 +10,30 @@ private static class T implements Runnable{
 		while (true) {
             if (SetTeams.frame.isVisible()) {
                 // do the validation
-                System.out.println("waiting");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e1) {
-                    break;
+                  
                 }
+            }
+            else {
+            	VisualBoard v = new VisualBoard(s);
+            	break;
             }
         }	
 	}
 
+
 }
 
-public static void main(String[] args) {
-	Scorekeeper s = new Scorekeeper();
+public Runner()  {
+	s = new Scorekeeper();
 	SetTeams win = new SetTeams(s);
 	new Thread(new T()).start();
-	//VisualBoard v = new VisualBoard(s);
+}
+
+public static void main (String args[]) throws InterruptedException {
+	Runner r = new Runner();
 }
 
 }

@@ -69,7 +69,7 @@ public class SetTeams {
 				Team TmpTm1 = (Team) comboBox.getSelectedItem();
 				Team TmpTm2 = (Team) comboBox_1.getSelectedItem();
 				s.setTeams(TmpTm1, TmpTm2);
-				s.printSetTeams();
+				//s.printSetTeams();
 				frame.setVisible(false);
 				frame.removeAll();
 				frame.dispose();
