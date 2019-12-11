@@ -60,9 +60,9 @@ public class VisualBoard {
 		frame.getContentPane().add(mainpanel);
 		GridBagLayout gbl_mainpanel = new GridBagLayout();
 		gbl_mainpanel.columnWidths = new int[]{screenSize.width, 0};
-		gbl_mainpanel.rowHeights = new int[]{(int)(screenSize.height/6), (int)(screenSize.height * (5.0/8)), 0};
-		gbl_mainpanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_mainpanel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_mainpanel.rowHeights = new int[]{(int)(screenSize.height/6), (int)(screenSize.height * (5.0/8)), 0, 0};
+		gbl_mainpanel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_mainpanel.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		mainpanel.setLayout(gbl_mainpanel);
 		
 		JPanel panelTop = new JPanel();
@@ -83,7 +83,7 @@ public class VisualBoard {
 		leftTeam.setBackground(Color.BLACK);
 		GridBagConstraints gbc_leftTeam = new GridBagConstraints();
 		gbc_leftTeam.fill = GridBagConstraints.BOTH;
-		gbc_leftTeam.insets = new Insets(0, 0, 0, 5);
+		gbc_leftTeam.insets = new Insets(0, 0, 0, 0);
 		gbc_leftTeam.gridx = 0;
 		gbc_leftTeam.gridy = 0;
 		panelTop.add(leftTeam, gbc_leftTeam);
@@ -108,12 +108,22 @@ public class VisualBoard {
 		
 		JPanel midPanel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 0, 0);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 1;
 		midPanel.setBackground(Color.WHITE);
 		mainpanel.add(midPanel, gbc_panel);
 		midPanel.setLayout(null);
+		
+		
+		JPanel botPanel = new JPanel();
+		GridBagConstraints gbc_panel1 = new GridBagConstraints();
+		gbc_panel1.fill = GridBagConstraints.BOTH;
+		gbc_panel1.gridx = 0;
+		gbc_panel1.gridy = 2;
+		botPanel.setBackground(Color.GREEN);
+		mainpanel.add(botPanel, gbc_panel1);
 
 				
 		frame.setVisible(true);
