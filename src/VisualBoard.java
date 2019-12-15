@@ -97,7 +97,7 @@ public class VisualBoard {
 		leftTeam.add(leftTeamLabel);
 		
 		JPanel rightTeam = new JPanel();
-		rightTeam.setBackground(Color.GRAY);
+		rightTeam.setBackground(Color.WHITE);
 		GridBagConstraints gbc_rightTeam = new GridBagConstraints();
 		gbc_rightTeam.fill = GridBagConstraints.BOTH;
 		gbc_rightTeam.gridx = 1;
@@ -107,7 +107,7 @@ public class VisualBoard {
 		
 		JLabel rightTeamLabel = new JLabel(s.getSetTeam2().toString());
 		rightTeamLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		rightTeamLabel.setForeground(Color.WHITE);
+		rightTeamLabel.setForeground(Color.BLACK);
 		rightTeamLabel.setFont(new Font("Verdana", Font.PLAIN, 95));
 		rightTeam.add(rightTeamLabel);
 		
@@ -132,14 +132,13 @@ public class VisualBoard {
 		gbc_panel1.fill = GridBagConstraints.BOTH;
 		gbc_panel1.gridx = 0;
 		gbc_panel1.gridy = 0;
-		panel.setBackground(Color.BLACK);
 		midPanel.add(panel, gbc_panel1);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblHello = new JLabel("Hello");
+		JLabel lblHello = new JLabel(Integer.toString(s.getSetTeam1().getScore()));
 		lblHello.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHello.setForeground(Color.WHITE);
-		lblHello.setFont(new Font("Verdana", Font.PLAIN, 99));
+		lblHello.setForeground(Color.BLACK);
+		lblHello.setFont(new Font("Verdana", Font.PLAIN, 500));
 		panel.add(lblHello);
 		
 		JPanel panel_1 = new JPanel();
@@ -148,14 +147,13 @@ public class VisualBoard {
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
 		gbc_panel_1.gridy = 0;
-		panel_1.setBackground(Color.GRAY);
 		midPanel.add(panel_1, gbc_panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblWorld = new JLabel("World");
+		JLabel lblWorld = new JLabel(Integer.toString(s.getSetTeam2().getScore()));
 		lblWorld.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWorld.setForeground(Color.WHITE);
-		lblWorld.setFont(new Font("Verdana", Font.PLAIN, 99));
+		lblWorld.setForeground(Color.BLACK);
+		lblWorld.setFont(new Font("Verdana", Font.PLAIN, 500));
 		panel_1.add(lblWorld);
 		
 		
@@ -165,7 +163,7 @@ public class VisualBoard {
 		gbc_panel11.fill = GridBagConstraints.BOTH;
 		gbc_panel11.gridx = 0;
 		gbc_panel11.gridy = 2;
-		botPanel.setBackground(Color.GREEN);
+		botPanel.setBackground(Color.GRAY);
 		mainpanel.add(botPanel, gbc_panel11);
 		botPanel.setLayout(new BorderLayout(0, 0));
 
