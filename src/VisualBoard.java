@@ -50,7 +50,7 @@ public class VisualBoard {
 	private void initialize() {
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		JFrame frame = new JFrame("AHS Trivia Contest");
+		JFrame frame = new JFrame("AHS Trivia Contest Scorekeeper by Caleb Rollins");
 		frame.setSize(screenSize.width, screenSize.height);
 		frame.setLocationRelativeTo (null);
 
@@ -88,8 +88,10 @@ public class VisualBoard {
 		gbc_leftTeam.gridx = 0;
 		gbc_leftTeam.gridy = 0;
 		panelTop.add(leftTeam, gbc_leftTeam);
+		leftTeam.setLayout(new BorderLayout(0, 0));
 		
 		JLabel leftTeamLabel = new JLabel(s.getSetTeam1().toString());
+		leftTeamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		leftTeamLabel.setFont(new Font("Verdana", Font.PLAIN, 95));
 		leftTeamLabel.setForeground(Color.WHITE);
 		leftTeam.add(leftTeamLabel);
@@ -101,8 +103,10 @@ public class VisualBoard {
 		gbc_rightTeam.gridx = 1;
 		gbc_rightTeam.gridy = 0;
 		panelTop.add(rightTeam, gbc_rightTeam);
+		rightTeam.setLayout(new BorderLayout(0, 0));
 		
 		JLabel rightTeamLabel = new JLabel(s.getSetTeam2().toString());
+		rightTeamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		rightTeamLabel.setForeground(Color.WHITE);
 		rightTeamLabel.setFont(new Font("Verdana", Font.PLAIN, 95));
 		rightTeam.add(rightTeamLabel);
@@ -130,6 +134,13 @@ public class VisualBoard {
 		gbc_panel1.gridy = 0;
 		panel.setBackground(Color.BLACK);
 		midPanel.add(panel, gbc_panel1);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblHello = new JLabel("Hello");
+		lblHello.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHello.setForeground(Color.WHITE);
+		lblHello.setFont(new Font("Verdana", Font.PLAIN, 99));
+		panel.add(lblHello);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -139,6 +150,13 @@ public class VisualBoard {
 		gbc_panel_1.gridy = 0;
 		panel_1.setBackground(Color.GRAY);
 		midPanel.add(panel_1, gbc_panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblWorld = new JLabel("World");
+		lblWorld.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWorld.setForeground(Color.WHITE);
+		lblWorld.setFont(new Font("Verdana", Font.PLAIN, 99));
+		panel_1.add(lblWorld);
 		
 		
 		JPanel botPanel = new JPanel();
@@ -150,12 +168,6 @@ public class VisualBoard {
 		botPanel.setBackground(Color.GREEN);
 		mainpanel.add(botPanel, gbc_panel11);
 		botPanel.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel = new JLabel("Atkins Trivia Scorekeeper by Caleb Rollins");
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
-		botPanel.add(lblNewLabel, BorderLayout.WEST);
 
 				
 		frame.setVisible(true);
