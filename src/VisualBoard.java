@@ -27,6 +27,7 @@ import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.FlowLayout;
 import java.awt.Insets;
+import javax.swing.SwingConstants;
 
 public class VisualBoard {
 	
@@ -68,7 +69,7 @@ public class VisualBoard {
 		JPanel panelTop = new JPanel();
 		GridBagConstraints gbc_panelTop = new GridBagConstraints();
 		gbc_panelTop.fill = GridBagConstraints.BOTH;
-		gbc_panelTop.insets = new Insets(0, 0, 5, 0);
+		gbc_panelTop.insets = new Insets(5, 0, 5, 0);
 		gbc_panelTop.gridx = 0;
 		gbc_panelTop.gridy = 0;
 		mainpanel.add(panelTop, gbc_panelTop);
@@ -108,22 +109,53 @@ public class VisualBoard {
 		
 		JPanel midPanel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.insets = new Insets(0, 0, 0, 0);
+		gbc_panel.insets = new Insets(5, 0, 5, 0);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 1;
 		midPanel.setBackground(Color.WHITE);
 		mainpanel.add(midPanel, gbc_panel);
-		midPanel.setLayout(null);
+		GridBagLayout gbl_midPanel = new GridBagLayout();
+		gbl_midPanel.columnWidths = new int[]{(int)(screenSize.width/2), (int)(screenSize.width/2), 0};
+		gbl_midPanel.rowHeights = new int[]{(int)(screenSize.height * (5.0/8)), 0};
+		gbl_midPanel.columnWeights = new double[]{1.0, 1.0};
+		gbl_midPanel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		midPanel.setLayout(gbl_midPanel);
+		
+		JPanel panel = new JPanel();
+		GridBagConstraints gbc_panel1 = new GridBagConstraints();
+		gbc_panel1.insets = new Insets(0, 0, 0, 0);
+		gbc_panel1.fill = GridBagConstraints.BOTH;
+		gbc_panel1.gridx = 0;
+		gbc_panel1.gridy = 0;
+		panel.setBackground(Color.BLACK);
+		midPanel.add(panel, gbc_panel1);
+		
+		JPanel panel_1 = new JPanel();
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 0, 0);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 1;
+		gbc_panel_1.gridy = 0;
+		panel_1.setBackground(Color.GRAY);
+		midPanel.add(panel_1, gbc_panel_1);
 		
 		
 		JPanel botPanel = new JPanel();
-		GridBagConstraints gbc_panel1 = new GridBagConstraints();
-		gbc_panel1.fill = GridBagConstraints.BOTH;
-		gbc_panel1.gridx = 0;
-		gbc_panel1.gridy = 2;
+		GridBagConstraints gbc_panel11 = new GridBagConstraints();
+		gbc_panel11.insets = new Insets(5, 0, 0, 0);
+		gbc_panel11.fill = GridBagConstraints.BOTH;
+		gbc_panel11.gridx = 0;
+		gbc_panel11.gridy = 2;
 		botPanel.setBackground(Color.GREEN);
-		mainpanel.add(botPanel, gbc_panel1);
+		mainpanel.add(botPanel, gbc_panel11);
+		botPanel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel = new JLabel("Atkins Trivia Scorekeeper by Caleb Rollins");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
+		botPanel.add(lblNewLabel, BorderLayout.WEST);
 
 				
 		frame.setVisible(true);
