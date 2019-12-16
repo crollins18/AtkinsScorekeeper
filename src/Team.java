@@ -3,12 +3,12 @@ import java.io.File;
 public class Team {
 	
 	private String teamName;
-	private File teamImage;
+	private String teamImage;
 	private int score;
 	
 	public Team(String teamName, String teamImage) {
 		this.teamName = teamName;
-		this.teamImage = new File(teamImage);
+		this.teamImage = teamImage;
 		score = 0;
 	}
 	
@@ -16,7 +16,7 @@ public class Team {
 		return teamName;
 	}
 	
-	public File getTeamImage() {
+	public String getTeamImage() {
 		return teamImage;
 	}
 	

@@ -31,6 +31,8 @@ import javax.swing.SwingUtilities;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /*TODO PTS indicator selection
  * image backgrounds for later...
@@ -60,6 +62,12 @@ public class VisualBoard {
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		JFrame frame = new JFrame("AHS Trivia Contest Scorekeeper by Caleb Rollins");
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				System.exit(1);
+			}
+		});
 		frame.setSize(screenSize.width, screenSize.height);
 		frame.setLocationRelativeTo (null);
 
@@ -134,9 +142,9 @@ public class VisualBoard {
 		gbl_midPanel.columnWeights = new double[]{1.0, 1.0};
 		gbl_midPanel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		midPanel.setLayout(gbl_midPanel);
-		
-		JPanel panel = new JPanel();
-
+				
+	    ImagePanel panel = new ImagePanel(s.getSetTeam1().getTeamImage());
+	
 		GridBagConstraints gbc_panel1 = new GridBagConstraints();
 		gbc_panel1.insets = new Insets(0, 0, 0, 0);
 		gbc_panel1.fill = GridBagConstraints.BOTH;
@@ -162,7 +170,8 @@ public class VisualBoard {
 		});
 		panel.add(lblHello);
 		
-		JPanel panel_1 = new JPanel();
+	    ImagePanel panel_1 = new ImagePanel(s.getSetTeam2().getTeamImage());
+
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 0, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
@@ -510,7 +519,8 @@ public class VisualBoard {
 				transpo.setScore(5);
 			}
 		});
-
+		
+	    frame.pack();
 				
 		frame.setVisible(true);
 	
