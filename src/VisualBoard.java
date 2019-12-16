@@ -32,6 +32,7 @@ import javax.swing.SwingConstants;
 public class VisualBoard {
 	
 	private Scorekeeper s;
+	private JPanel ptssix;
 	
 	/**
 	 * Launch the application.
@@ -178,6 +179,95 @@ public class VisualBoard {
 		gbc_leftbot.gridx = 0;
 		gbc_leftbot.gridy = 0;
 		botPanel.add(leftbot, gbc_leftbot);
+		leftbot.setLayout(new GridLayout(2, 4, 5, 5));
+		
+		JPanel ptsone = new JPanel();
+		ptsone.setBackground(Color.GRAY);
+		leftbot.add(ptsone);
+		ptsone.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label = new JLabel("1");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptsone.add(label);
+		
+		JPanel ptsthree = new JPanel();
+		ptsthree.setBackground(Color.GRAY);
+		leftbot.add(ptsthree);
+		ptsthree.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_3 = new JLabel("3");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setForeground(Color.WHITE);
+		label_3.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptsthree.add(label_3);
+		
+		ptssix = new JPanel();
+		ptssix.setBackground(Color.GRAY);
+		leftbot.add(ptssix);
+		ptssix.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_5 = new JLabel("6");
+		label_5.setHorizontalAlignment(SwingConstants.CENTER);
+		label_5.setForeground(Color.WHITE);
+		label_5.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptssix.add(label_5);
+		
+		JPanel ptsnine = new JPanel();
+		ptsnine.setBackground(Color.GRAY);
+		leftbot.add(ptsnine);
+		ptsnine.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_6 = new JLabel("9");
+		label_6.setHorizontalAlignment(SwingConstants.CENTER);
+		label_6.setForeground(Color.WHITE);
+		label_6.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptsnine.add(label_6);
+		
+		JPanel ptstwo = new JPanel();
+		ptstwo.setBackground(Color.GRAY);
+		leftbot.add(ptstwo);
+		ptstwo.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_2 = new JLabel("2");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setForeground(Color.WHITE);
+		label_2.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptstwo.add(label_2);
+		
+		JPanel ptsfour = new JPanel();
+		ptsfour.setBackground(Color.GRAY);
+		leftbot.add(ptsfour);
+		ptsfour.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_4 = new JLabel("4");
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setForeground(Color.WHITE);
+		label_4.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptsfour.add(label_4);
+		
+		JPanel ptseight = new JPanel();
+		ptseight.setBackground(Color.GRAY);
+		leftbot.add(ptseight);
+		ptseight.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_7 = new JLabel("8");
+		label_7.setHorizontalAlignment(SwingConstants.CENTER);
+		label_7.setForeground(Color.WHITE);
+		label_7.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptseight.add(label_7);
+		
+		JPanel ptstwelve = new JPanel();
+		ptstwelve.setBackground(Color.GRAY);
+		leftbot.add(ptstwelve);
+		ptstwelve.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_8 = new JLabel("12");
+		label_8.setHorizontalAlignment(SwingConstants.CENTER);
+		label_8.setForeground(Color.WHITE);
+		label_8.setFont(new Font("Verdana", Font.PLAIN, 35));
+		ptstwelve.add(label_8);
 		
 		JPanel rightbot = new JPanel();
 		rightbot.setBackground(Color.GRAY);
@@ -187,7 +277,13 @@ public class VisualBoard {
 		gbc_rightbot.gridy = 0;
 		gbc_rightbot.insets = new Insets(0, 5, 0, 0);
 		botPanel.add(rightbot, gbc_rightbot);
-		rightbot.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		rightbot.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_1 = new JLabel("5");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Verdana", Font.PLAIN, 45));
+		rightbot.add(label_1);
 
 				
 		frame.setVisible(true);
