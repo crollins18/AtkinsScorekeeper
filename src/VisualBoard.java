@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
@@ -28,11 +27,18 @@ import java.awt.LayoutManager;
 import java.awt.FlowLayout;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+/*TODO PTS indicator selection
+*/
 public class VisualBoard {
 	
 	private Scorekeeper s;
 	private JPanel ptssix;
+	private ScoreTransporter transpo;
 	
 	/**
 	 * Launch the application.
@@ -43,6 +49,7 @@ public class VisualBoard {
 	public VisualBoard(Scorekeeper s) {
 		this.s = s;
 		initialize();
+		transpo = new ScoreTransporter(0);
 	}
 
 	/**
@@ -91,7 +98,7 @@ public class VisualBoard {
 		panelTop.add(leftTeam, gbc_leftTeam);
 		leftTeam.setLayout(new BorderLayout(0, 0));
 		
-		JLabel leftTeamLabel = new JLabel(s.getSetTeam1().toString());
+		ResizeLabelFont leftTeamLabel = new ResizeLabelFont(s.getSetTeam1().toString());
 		leftTeamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		leftTeamLabel.setFont(new Font("Verdana", Font.PLAIN, 95));
 		leftTeamLabel.setForeground(Color.WHITE);
@@ -106,7 +113,7 @@ public class VisualBoard {
 		panelTop.add(rightTeam, gbc_rightTeam);
 		rightTeam.setLayout(new BorderLayout(0, 0));
 		
-		JLabel rightTeamLabel = new JLabel(s.getSetTeam2().toString());
+		ResizeLabelFont rightTeamLabel = new ResizeLabelFont(s.getSetTeam2().toString());
 		rightTeamLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		rightTeamLabel.setForeground(Color.BLACK);
 		rightTeamLabel.setFont(new Font("Verdana", Font.PLAIN, 95));
@@ -128,6 +135,7 @@ public class VisualBoard {
 		midPanel.setLayout(gbl_midPanel);
 		
 		JPanel panel = new JPanel();
+
 		GridBagConstraints gbc_panel1 = new GridBagConstraints();
 		gbc_panel1.insets = new Insets(0, 0, 0, 0);
 		gbc_panel1.fill = GridBagConstraints.BOTH;
@@ -136,10 +144,21 @@ public class VisualBoard {
 		midPanel.add(panel, gbc_panel1);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblHello = new JLabel(Integer.toString(s.getSetTeam1().getScore()));
+		ResizeLabelFont lblHello = new ResizeLabelFont(Integer.toString(s.getSetTeam1().getScore()));
 		lblHello.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHello.setForeground(Color.BLACK);
 		lblHello.setFont(new Font("Verdana", Font.PLAIN, 500));
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(SwingUtilities.isLeftMouseButton(e)) {
+					lblHello.setText(Integer.toString(Integer.parseInt(lblHello.getText()) + transpo.getScore())); 
+				}
+				else if(SwingUtilities.isRightMouseButton(e)) {
+					lblHello.setText(Integer.toString(Integer.parseInt(lblHello.getText()) - transpo.getScore())); 
+				}
+			}
+		});
 		panel.add(lblHello);
 		
 		JPanel panel_1 = new JPanel();
@@ -148,13 +167,25 @@ public class VisualBoard {
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
 		gbc_panel_1.gridy = 0;
+
 		midPanel.add(panel_1, gbc_panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblWorld = new JLabel(Integer.toString(s.getSetTeam2().getScore()));
+		ResizeLabelFont lblWorld = new ResizeLabelFont(Integer.toString(s.getSetTeam2().getScore()));
 		lblWorld.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWorld.setForeground(Color.BLACK);
 		lblWorld.setFont(new Font("Verdana", Font.PLAIN, 500));
+		panel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(SwingUtilities.isLeftMouseButton(e)) {
+					lblWorld.setText(Integer.toString(Integer.parseInt(lblWorld.getText()) + transpo.getScore())); 
+				}
+				else if(SwingUtilities.isRightMouseButton(e)) {
+					lblWorld.setText(Integer.toString(Integer.parseInt(lblWorld.getText()) - transpo.getScore())); 
+				}
+			}
+		});
 		panel_1.add(lblWorld);
 		
 		
@@ -182,94 +213,148 @@ public class VisualBoard {
 		leftbot.setLayout(new GridLayout(2, 4, 5, 5));
 		
 		JPanel ptsone = new JPanel();
+		ptsone.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(1);
+			}
+		});
 		ptsone.setBackground(Color.GRAY);
 		leftbot.add(ptsone);
 		ptsone.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("1");
+		ResizeLabelFont label = new ResizeLabelFont("1");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptsone.add(label);
 		
 		JPanel ptsthree = new JPanel();
+		ptsthree.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(3);
+			}
+		});
 		ptsthree.setBackground(Color.GRAY);
 		leftbot.add(ptsthree);
 		ptsthree.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_3 = new JLabel("3");
+		ResizeLabelFont label_3 = new ResizeLabelFont("3");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setForeground(Color.WHITE);
 		label_3.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptsthree.add(label_3);
 		
 		ptssix = new JPanel();
+		ptssix.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(6);
+			}
+		});
 		ptssix.setBackground(Color.GRAY);
 		leftbot.add(ptssix);
 		ptssix.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_5 = new JLabel("6");
+		ResizeLabelFont label_5 = new ResizeLabelFont("6");
 		label_5.setHorizontalAlignment(SwingConstants.CENTER);
 		label_5.setForeground(Color.WHITE);
 		label_5.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptssix.add(label_5);
 		
 		JPanel ptsnine = new JPanel();
+		ptsnine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(9);
+			}
+		});
 		ptsnine.setBackground(Color.GRAY);
 		leftbot.add(ptsnine);
 		ptsnine.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_6 = new JLabel("9");
+		ResizeLabelFont label_6 = new ResizeLabelFont("9");
 		label_6.setHorizontalAlignment(SwingConstants.CENTER);
 		label_6.setForeground(Color.WHITE);
 		label_6.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptsnine.add(label_6);
 		
 		JPanel ptstwo = new JPanel();
+		ptstwo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(2);
+			}
+		});
 		ptstwo.setBackground(Color.GRAY);
 		leftbot.add(ptstwo);
 		ptstwo.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_2 = new JLabel("2");
+		ResizeLabelFont label_2 = new ResizeLabelFont("2");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setForeground(Color.WHITE);
 		label_2.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptstwo.add(label_2);
 		
 		JPanel ptsfour = new JPanel();
+		ptsfour.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(4);
+			}
+		});
 		ptsfour.setBackground(Color.GRAY);
 		leftbot.add(ptsfour);
 		ptsfour.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_4 = new JLabel("4");
+		ResizeLabelFont label_4 = new ResizeLabelFont("4");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setForeground(Color.WHITE);
 		label_4.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptsfour.add(label_4);
 		
 		JPanel ptseight = new JPanel();
+		ptseight.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(8);
+			}
+		});
 		ptseight.setBackground(Color.GRAY);
 		leftbot.add(ptseight);
 		ptseight.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_7 = new JLabel("8");
+		ResizeLabelFont label_7 = new ResizeLabelFont("8");
 		label_7.setHorizontalAlignment(SwingConstants.CENTER);
 		label_7.setForeground(Color.WHITE);
 		label_7.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptseight.add(label_7);
 		
 		JPanel ptstwelve = new JPanel();
+		ptstwelve.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(12);
+			}
+		});
 		ptstwelve.setBackground(Color.GRAY);
 		leftbot.add(ptstwelve);
 		ptstwelve.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_8 = new JLabel("12");
+		ResizeLabelFont label_8 = new ResizeLabelFont("12");
 		label_8.setHorizontalAlignment(SwingConstants.CENTER);
 		label_8.setForeground(Color.WHITE);
 		label_8.setFont(new Font("Verdana", Font.PLAIN, 35));
 		ptstwelve.add(label_8);
 		
 		JPanel rightbot = new JPanel();
+		rightbot.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				transpo.setScore(5);
+			}
+		});
 		rightbot.setBackground(Color.GRAY);
 		GridBagConstraints gbc_rightbot = new GridBagConstraints();
 		gbc_rightbot.fill = GridBagConstraints.BOTH;
@@ -279,10 +364,11 @@ public class VisualBoard {
 		botPanel.add(rightbot, gbc_rightbot);
 		rightbot.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_1 = new JLabel("5");
+		ResizeLabelFont label_1 = new ResizeLabelFont("5");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Verdana", Font.PLAIN, 45));
+		
 		rightbot.add(label_1);
 
 				
