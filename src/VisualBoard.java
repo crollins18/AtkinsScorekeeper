@@ -33,6 +33,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /*TODO PTS indicator selection
+ * image backgrounds for later...
 */
 public class VisualBoard {
 	
@@ -213,12 +214,6 @@ public class VisualBoard {
 		leftbot.setLayout(new GridLayout(2, 4, 5, 5));
 		
 		JPanel ptsone = new JPanel();
-		ptsone.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				transpo.setScore(1);
-			}
-		});
 		ptsone.setBackground(Color.GRAY);
 		leftbot.add(ptsone);
 		ptsone.setLayout(new BorderLayout(0, 0));
@@ -370,6 +365,151 @@ public class VisualBoard {
 		label_1.setFont(new Font("Verdana", Font.PLAIN, 45));
 		
 		rightbot.add(label_1);
+		
+		ptsone.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.BLACK);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.GRAY);
+
+				transpo.setScore(1);
+			}
+		});
+		
+		ptstwo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.BLACK);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.GRAY);
+				transpo.setScore(2);
+			}
+		});
+		
+		ptsthree.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.BLACK);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.GRAY);
+				transpo.setScore(3);
+			}
+		});
+		
+		ptsfour.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.BLACK);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.GRAY);
+				transpo.setScore(4);
+			}
+		});
+		
+		ptssix.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.BLACK);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.GRAY);
+				transpo.setScore(6);
+			}
+		});
+		
+		ptseight.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.BLACK);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.GRAY);
+				transpo.setScore(8);
+			}
+		});
+		
+		ptsnine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.BLACK);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.GRAY);
+				transpo.setScore(9);
+			}
+		});
+		
+		ptstwelve.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.BLACK);
+				rightbot.setBackground(Color.GRAY);
+				transpo.setScore(12);
+			}
+		});
+		
+		rightbot.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ptsone.setBackground(Color.GRAY);
+				ptstwo.setBackground(Color.GRAY);
+				ptsthree.setBackground(Color.GRAY);
+				ptsfour.setBackground(Color.GRAY);
+				ptssix.setBackground(Color.GRAY);
+				ptseight.setBackground(Color.GRAY);
+				ptsnine.setBackground(Color.GRAY);
+				ptstwelve.setBackground(Color.GRAY);
+				rightbot.setBackground(Color.BLACK);
+				transpo.setScore(5);
+			}
+		});
 
 				
 		frame.setVisible(true);
