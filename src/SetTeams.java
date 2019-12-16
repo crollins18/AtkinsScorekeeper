@@ -22,6 +22,8 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class SetTeams {
 
@@ -39,6 +41,8 @@ public class SetTeams {
 	private JPanel panel_1;
 	private Scorekeeper s;
 	public static JFrame frame;
+	private JLabel lblCompetitionName;
+	private JTextField textField;
 	
 	/**
 	 * Launch the application.
@@ -69,6 +73,7 @@ public class SetTeams {
 				Team TmpTm1 = (Team) comboBox.getSelectedItem();
 				Team TmpTm2 = (Team) comboBox_1.getSelectedItem();
 				s.setTeams(TmpTm1, TmpTm2);
+				s.setNameScoreName(textField.getText());
 				//s.printSetTeams();
 				frame.setVisible(false);
 				frame.removeAll();
@@ -97,7 +102,8 @@ public class SetTeams {
 		middlePanel.add(comboBox_1);
 		
 		JLabel lblScoringEngineCreated = new JLabel("Scoring Engine Created by Caleb Rollins");
-		lblScoringEngineCreated.setBounds(10, 121, 257, 22);
+		lblScoringEngineCreated.setHorizontalAlignment(SwingConstants.CENTER);
+		lblScoringEngineCreated.setBounds(10, 121, 237, 22);
 		middlePanel.add(lblScoringEngineCreated);
 		
 		lblTeam = new JLabel("Team 1");
@@ -107,6 +113,16 @@ public class SetTeams {
 		lblTeam_1 = new JLabel("Team 2");
 		lblTeam_1.setBounds(25, 48, 48, 14);
 		middlePanel.add(lblTeam_1);
+		
+		lblCompetitionName = new JLabel("Competition/Round Name");
+		lblCompetitionName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCompetitionName.setBounds(50, 77, 150, 14);
+		middlePanel.add(lblCompetitionName);
+		
+		textField = new JTextField();
+		textField.setBounds(77, 97, 96, 20);
+		middlePanel.add(textField);
+		textField.setColumns(10);
 		
 		panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1, BorderLayout.EAST);

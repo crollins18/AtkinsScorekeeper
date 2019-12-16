@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,11 +29,16 @@ import java.awt.FlowLayout;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import javax.swing.JLabel;
 
 /*TODO PTS indicator selection
  * image backgrounds for later...
@@ -143,7 +149,7 @@ public class VisualBoard {
 		gbl_midPanel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		midPanel.setLayout(gbl_midPanel);
 				
-	    ImagePanel panel = new ImagePanel(s.getSetTeam1().getTeamImage());
+	    JPanel panel = new JPanel();
 	
 		GridBagConstraints gbc_panel1 = new GridBagConstraints();
 		gbc_panel1.insets = new Insets(0, 0, 0, 0);
@@ -170,7 +176,12 @@ public class VisualBoard {
 		});
 		panel.add(lblHello);
 		
-	    ImagePanel panel_1 = new ImagePanel(s.getSetTeam2().getTeamImage());
+		JLabel nameLabel = new JLabel(s.getNameScoreName());
+		nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		nameLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		panel.add(nameLabel, BorderLayout.SOUTH);
+		
+	    JPanel panel_1 = new JPanel();
 
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 0, 0);
@@ -197,6 +208,25 @@ public class VisualBoard {
 			}
 		});
 		panel_1.add(lblWorld);
+		
+		JLabel timeLabel = new JLabel();
+		timeLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(timeLabel, BorderLayout.SOUTH);
+        final DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss aa");
+        ActionListener timerListener = new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                Date date = new Date();
+                String time = timeFormat.format(date);
+                timeLabel.setText(time);
+            }
+        };
+        Timer timer = new Timer(1000, timerListener);
+        // to make sure it doesn't wait one second at the start
+        timer.setInitialDelay(0);
+        timer.start();
 		
 		
 		JPanel botPanel = new JPanel();

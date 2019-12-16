@@ -5,7 +5,7 @@ import java.awt.event.ComponentEvent;
 
 public class ResizeLabelFont extends JLabel {
     public static final int MIN_FONT_SIZE=3;
-    public static final int MAX_FONT_SIZE=550;
+    public static final int MAX_FONT_SIZE=700;
     Graphics g;
 
     public ResizeLabelFont(String text) {

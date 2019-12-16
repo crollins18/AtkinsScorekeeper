@@ -8,6 +8,7 @@ public class Scorekeeper {
 	private ArrayList<Team> teams = new ArrayList<Team>();
 	private Team t1;
 	private Team t2;
+	private String scoreName;
 	
 	public Scorekeeper() {
 		Scanner f = null;
@@ -48,6 +49,14 @@ public class Scorekeeper {
 	
 	public Team getSetTeam2() {
 		return t2;
+	}
+	
+	public void setNameScoreName(String inStr) {
+		scoreName = inStr;
+	}
+	
+	public String getNameScoreName() {
+		return scoreName;
 	}
 
 
