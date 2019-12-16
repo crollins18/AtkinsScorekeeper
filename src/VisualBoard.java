@@ -165,7 +165,29 @@ public class VisualBoard {
 		gbc_panel11.gridy = 2;
 		botPanel.setBackground(Color.GRAY);
 		mainpanel.add(botPanel, gbc_panel11);
-		botPanel.setLayout(new BorderLayout(0, 0));
+		GridBagLayout gbl_botPanel = new GridBagLayout();
+		gbl_botPanel.columnWidths = new int[]{((int) (screenSize.width * 0.85)), (int)(screenSize.width * 0.15)};
+		gbl_botPanel.rowHeights = new int[]{(int)(screenSize.height/6), 0};
+		gbl_botPanel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_botPanel.rowWeights = new double[]{1.0, 1.0};
+		botPanel.setLayout(gbl_botPanel);
+		
+		JPanel leftbot = new JPanel();
+		GridBagConstraints gbc_leftbot = new GridBagConstraints();
+		gbc_leftbot.fill = GridBagConstraints.BOTH;
+		gbc_leftbot.gridx = 0;
+		gbc_leftbot.gridy = 0;
+		botPanel.add(leftbot, gbc_leftbot);
+		
+		JPanel rightbot = new JPanel();
+		rightbot.setBackground(Color.GRAY);
+		GridBagConstraints gbc_rightbot = new GridBagConstraints();
+		gbc_rightbot.fill = GridBagConstraints.BOTH;
+		gbc_rightbot.gridx = 1;
+		gbc_rightbot.gridy = 0;
+		gbc_rightbot.insets = new Insets(0, 5, 0, 0);
+		botPanel.add(rightbot, gbc_rightbot);
+		rightbot.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 				
 		frame.setVisible(true);
