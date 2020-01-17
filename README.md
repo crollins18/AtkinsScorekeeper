@@ -7,3 +7,5 @@ A homemade scoreboard for Academic Team matches
 3. Open the `Prefs.dat` file to edit team names (will add future ability for background images)
 4. Double click the `AHSTrivia.jar` and select the teams that will be playing the match and click the "Select Teams" button
 5. The full screen scoreboard should now show (in some cases the window needs to be maximized to fill entire screen)
+
+![](https://raw.githubusercontent.com/crollins18/AtkinsScorekeeper/master/helpimgs/board.PNG)
