@@ -9,3 +9,8 @@ A homemade scoreboard for Academic Team matches
 5. The full screen scoreboard should now show (in some cases the window needs to be maximized to fill entire screen)
 
 ![](https://raw.githubusercontent.com/crollins18/AtkinsScorekeeper/master/helpimgs/board.PNG)
+
+## Demo
+Left click to select a point operator and then choose the team to add the points to. Until another point operator is selected it will be highlighted. Right click a teams score to subtract the amount of points selected in the point operator menu.
+
+![](https://raw.githubusercontent.com/crollins18/AtkinsScorekeeper/master/helpimgs/action.gif)
